@@ -1,5 +1,5 @@
 #!/bin/bash
-
+sudo chown -R $USER:$USER /home/ubuntu/bot
 # Update system packages
 sudo apt update && sudo apt upgrade -y
 sudo apt install  nginx -y

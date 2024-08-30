@@ -15,7 +15,7 @@ nvm install 18
 
 # Install required npm packages
 npm i 
-
+npm i ejs
 # Install PM2 globally
  npm install pm2 
 

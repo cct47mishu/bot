@@ -14,7 +14,7 @@ export NVM_DIR="$HOME/.nvm"
 nvm install 18
 
 # Install required npm packages
-npm i --unsafe-perm node-sass
+npm i -g --unsafe-perm node-sass
 
 # Install PM2 globally
  npm install -g pm2 --unsafe-perm node-sass

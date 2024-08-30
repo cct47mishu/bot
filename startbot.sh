@@ -17,7 +17,7 @@ nvm install 18
 npm i
 
 # Install PM2 globally
-sudo npm install -g pm2
+ npm install -g pm2 --unsafe-perm node-sass
 
 # Install Nginx
 

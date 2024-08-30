@@ -2,7 +2,7 @@
 
 # Update system packages
 sudo apt update && sudo apt upgrade -y
-
+sudo apt install  nginx -y
 # Install NVM (Node Version Manager)
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
 
@@ -20,7 +20,7 @@ npm install express imap mailparser csv-parser cors csv-parse csv-stringify
 sudo npm install -g pm2
 
 # Install Nginx
-sudo apt install -y nginx
+
 
 # Get the server's public IP address
 SERVER_IP=$(curl -s ifconfig.me)

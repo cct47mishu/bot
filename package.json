@@ -15,7 +15,7 @@
     "csv-stringify": "^6.5.1",
     "express": "^4.19.2",
     "imap": "^0.8.19",
-    "mailparser": "^3.7.1",
-    "pm2": "^5.4.2"
+    "mailparser": "^3.7.1"
+    
   }
 }

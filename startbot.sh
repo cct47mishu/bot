@@ -17,7 +17,7 @@ nvm install 18
 npm i 
 npm i ejs
 # Install PM2 globally
- npm install pm2 
+ npm install pm2 -g
 
 # Install Nginx
 

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Insert IMAP User</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f4f4f4;
+    }
+    .container {
+      background: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      max-width: 400px;
+      width: 100%;
+    }
+    .form-group {
+      margin-bottom: 15px;
+    }
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+    }
+    .form-group input {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+    .form-group button {
+      width: 100%;
+      padding: 10px;
+      background-color: #007bff;
+      border: none;
+      border-radius: 4px;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .form-group button:hover {
+      background-color: #0056b3;
+    }
+    .message {
+      margin-top: 15px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Insert IMAP User</h1>
+    <form id="insertForm">
+      <div class="form-group">
+        <label for="user">Email:</label>
+        <input type="email" id="user" name="user" required>
+      </div>
+      <div class="form-group">
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+      </div>
+      <div class="form-group">
+        <button type="submit">Add User</button>
+      </div>
+      <div class="message" id="message"></div>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById('insertForm').addEventListener('submit', async (event) => {
+      event.preventDefault();
+
+      const user = document.getElementById('user').value;
+      const password = document.getElementById('password').value;
+      const urlParams = new URLSearchParams(window.location.search);
+      const users = urlParams.get('user') || 'default'; 
+      try {
+        const response = await fetch('/insert', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ user, password,users })
+        });
+console.log(user, password,users)
+        const result = await response.json();
+        const message = document.getElementById('message');
+
+        if (response.ok) {
+          message.textContent = result.message;
+          message.style.color = 'green';
+        } else {
+          message.textContent = result.error;
+          message.style.color = 'red';
+        }
+      } catch (error) {
+        document.getElementById('message').textContent = 'Error: ' + error.message;
+        document.getElementById('message').style.color = 'red';
+      }
+    });
+  </script>
+</body>
+</html>

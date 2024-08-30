@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Counts</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            width: 100vw;
+            margin: 0 auto;
+            padding: 10px;
+            background-color: #f9f9f9;
+            color: #333;
+        
+        }
+        h1 {
+            display: flex;
+            text-align: center;
+            font-size: 1.5rem;
+            margin: 20px 0;
+        }
+        table {
+            align-items: center;
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0 auto;
+            overflow-x: auto;
+            display: block;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+        th {
+            background-color: #f4f4f4;
+            font-weight: bold;
+        }
+        /* Responsive adjustments */
+        @media (max-width: 600px) {
+            th, td {
+                padding: 6px;
+                font-size: 0.875rem;
+            }
+            h1 {
+                font-size: 1.25rem;
+            }
+        }
+        @media (max-width: 400px) {
+            th, td {
+                padding: 4px;
+                font-size: 0.75rem;
+            }
+            h1 {
+                font-size: 1rem;
+            }
+        }
+        @media (max-width: 250px) {
+            table, thead, tbody, th, td, tr {
+                display: block;
+            }
+            th, td {
+                padding: 5px;
+                font-size: 0.75rem;
+                text-align: right;
+                position: relative;
+            }
+            th {
+                text-align: left;
+                font-weight: normal;
+                background-color: transparent;
+                border-bottom: 0;
+            }
+            td {
+                border: 0;
+                border-bottom: 1px solid #ddd;
+            }
+            td:before {
+                content: attr(data-label);
+                position: absolute;
+                left: 0;
+                width: 50%;
+                padding-left: 5px;
+                font-weight: bold;
+                text-align: left;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Email Counts</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>User</th>
+                <th>Total Emails</th>
+                <th>Inbox Emails</th>
+                <th>Spam Emails</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Display the totals -->
+            <tr>
+                <td><strong>Total (All Users)</strong></td>
+                <td><strong><%= totalInbox + totalSpam %></strong></td>
+                <td><strong><%= totalInbox %></strong></td>
+                <td><strong><%= totalSpam %></strong></td>
+            </tr>
+
+            <% results.forEach(result => { %>
+                <tr>
+                    <td><%= result.user %></td>
+                    <td><%= result.total %></td>
+                    <td><%= result.inbox %></td>
+                    <td><%= result.spam %></td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+</body>
+</html>
